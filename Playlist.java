@@ -16,27 +16,7 @@ import java.util.HashMap;
 
 class Playlist {
      
-    public static int acceptTracklist(){
-
-        try (Scanner userObj = new Scanner(System.in)) {
-            System.out.println("Enter number of songs");
-            int userTracklist = userObj.nextInt();
-
-            if ( userTracklist >= 2 && userTracklist<= 20 ){
-                System.out.println("User tracklist is " + userTracklist+ " long");
-            } else {
-                System.out.println("User tracklist must be more than one and less than 21 tracks");
-                System.out.println("Enter number of songs");
-                userTracklist = userObj.nextInt();
-                acceptTracklist();
-            }
-            return userTracklist;
-        }
-        
-    }
-
-
-    
+     
     public static void main(String[] args){
         String firstName = "Mark";
         String lastName = "Westerweel";
@@ -46,13 +26,18 @@ class Playlist {
         System.out.println("Last name is: " + lastName);
         System.out.println("Student number is: " + studentNumber);
 
-        acceptTracklist();   
+        int userTracklist;
+        do {
+            try (Scanner userObj = new Scanner(System.in)) {
+                System.out.println("Enter number of songs between 2 and 20");
+                userTracklist = userObj.nextInt();
+            }
+        }
+        while (userTracklist < 2 || userTracklist > 20);
 
-        
-
-        // HashMap<String, Integer> track = new HashMap<String, Integer>();
+        HashMap<String, Integer> track = new HashMap<String, Integer>();
     
-        // track.put("Stairways to heaven", 479);
-        // System.out.println(track);     
+        track.put("Stairways to heaven", 479);
+        System.out.println(track);     
     }    
 }
